@@ -108,11 +108,6 @@ jobs:
             ${{ steps.analyze.outputs.sizes }}
           comment-tag: size-report
 
-  check-release-labels-and-changelog:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
       - name: Check PR has tracker release label set
         if: >-
           ${{ !(
