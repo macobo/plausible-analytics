@@ -9,8 +9,7 @@ jobs:
   tracker-release-npm:
     runs-on: ubuntu-latest
     permissions:
-      # :TODO: Verify whether these are needed.
-      pull-requests: write
+      pull-requests: read
       contents: read
     if: >-
       ${{ github.event.pull_request.merged == true && (
