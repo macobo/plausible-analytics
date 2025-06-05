@@ -6,7 +6,7 @@ import { track } from './track'
 
 function init(overrides) {
   if (COMPILE_PLAUSIBLE_WEB && window.plausible && window.plausible.l) {
-    console.warn('Plausible analytics script was already initialized, skipping init!')
+    console.warn('Plausible analytics script was already initialized, skipping init')
     return
   }
 
