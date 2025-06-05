@@ -114,7 +114,12 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Check PR has tracker release label set
-        if: ${{ !contains(github.event.pull_request.labels.*.name, 'tracker release:') }}
+        if: >-
+          ${{ !(
+          contains(github.event.pull_request.labels.*.name, 'tracker-release: patch') ||
+          contains(github.event.pull_request.labels.*.name, 'tracker-release: minor') ||
+          contains(github.event.pull_request.labels.*.name, 'tracker-release: major') ) }}
+
         run: |
           echo "::error::PR changes tracker script but does not have a 'tracker release:' label. Please add one."
           exit 1
