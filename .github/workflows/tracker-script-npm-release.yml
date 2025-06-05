@@ -3,7 +3,7 @@ name: "Create and publish releases"
 on:
   pull_request:
     branches: [master]
-    # types: [closed]
+    types: [closed]
 
 jobs:
   tracker-release-npm:
@@ -12,9 +12,8 @@ jobs:
       # :TODO: Verify whether these are needed.
       pull-requests: write
       contents: read
-    # :TODO: github.event.pull_request.merged == true
     if: >-
-      ${{ (
+      ${{ github.event.pull_request.merged == true && (
       contains(github.event.pull_request.labels.*.name, 'tracker-release: patch') ||
       contains(github.event.pull_request.labels.*.name, 'tracker-release: minor') ||
       contains(github.event.pull_request.labels.*.name, 'tracker-release: major') ) }}
