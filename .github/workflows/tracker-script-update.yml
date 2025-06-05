@@ -127,6 +127,9 @@ jobs:
       - name: Get changed files
         id: changelog_changed
         uses: tj-actions/changed-files@ed68ef82c095e0d48ec87eccea555d944a631a4c
+        with:
+          files: |
+            tracker/npm_package/CHANGELOG.md
 
       - name: Error if PR no tracker CHANGELOG.md updates
         if: ${{ steps.changelog_changed.outputs.any_changed == 'false' }}
