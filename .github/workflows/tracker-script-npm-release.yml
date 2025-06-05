@@ -6,7 +6,7 @@ on:
     # types: [closed]
 
 jobs:
-  release-npm:
+  tracker-release-npm:
     runs-on: ubuntu-latest
     permissions:
       # :TODO: Verify whether these are needed.
@@ -50,7 +50,8 @@ jobs:
           echo "version=$(jq -r .version tracker/npm_package/package.json)" >> $GITHUB_OUTPUT
 
       - name: Publish tracker script to NPM
-        run: npm publish --prefix tracker/npm_package
+        run: npm publish
+        working-directory: tracker/npm_package
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
