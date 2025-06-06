@@ -1,4 +1,4 @@
-name: "Create and publish releases"
+name: "Tracker: publish NPM release"
 
 on:
   pull_request:
@@ -57,7 +57,6 @@ jobs:
       - name: Commit and Push changes
         uses: EndBug/add-and-commit@a94899bca583c204427a224a7af87c02f9b325d5
         with:
-          branch: master
           message: "Released tracker script version ${{ steps.package.outputs.version }}"
 
       - name: Notify team on success
